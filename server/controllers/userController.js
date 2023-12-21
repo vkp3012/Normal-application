@@ -1,5 +1,6 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
+import { tokenDecode } from "../middleware/authMiddleware.js";
 
 export const signUp = async (req,res) => {
     try {
@@ -21,7 +22,6 @@ export const signUp = async (req,res) => {
             phoneNumber,
             location, 
             password: passwordHash
-            // password
         })
 
         const save = await newUser.save();
@@ -32,3 +32,14 @@ export const signUp = async (req,res) => {
         })
     }
 } 
+
+export const login = async (req,res) => {
+    try {
+        const { email, password } = req.body;
+        
+    } catch (error) {
+        res.status.json({
+            massage : error.massage
+        })
+    }
+}
