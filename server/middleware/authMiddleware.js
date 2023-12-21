@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 export const tokenDecode = (req,res,next) => {
     try {
         const token = req.headers("Authorization")
-        if(!token) res.status(404).json({
+        if(!token) return res.status(404).json({
             massage : "Accesses Denied"
         });
         if(token.startWith("Bearer ")){

@@ -4,12 +4,14 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
 import { signUp } from "./controllers/userController.js";
+import router from "./routers/userRouter.js";
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
 app.post("/auth/signup", signUp )
+app.use("/auth",router)
 
 const port = process.env.PORT || 5000
 
